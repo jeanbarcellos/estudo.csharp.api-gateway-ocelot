@@ -1,24 +1,27 @@
 version: '3.4'
 
 services:
-  gateway:
-    image: gateway
+  gateway-api:
+    image: gateway-api
+    container_name: gateway-api
     build:
       context: .
       dockerfile: src\gateways\ApiGateway\Dockerfile
     ports:
       - 7000:80
 
-  pedido:
-    image: pedido
+  pedido-api:
+    image: pedido-api
+    container_name: pedido-api
     build:
       context: .
       dockerfile: src\services\Pedido.API\Dockerfile
     ports:
       - 6001:80
 
-  catalogo:
-    image: catalogo
+  catalogo-api:
+    image: catalogo-api
+    container_name: catalogo-api
     build:
       context: .
       dockerfile: src\services\Catalogo.API\Dockerfile

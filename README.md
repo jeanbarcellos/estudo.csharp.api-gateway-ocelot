@@ -54,3 +54,31 @@ Ocelot é uma biblioteca que permite criar um API Gateway com o ASP.NET. Possuin
 - Service Fabric.
 
 Mesmo que seja voltado para aplicações .NET que estejam implementando uma arquitetura de microsserviços, o Ocelot pode ser utilizado como API Gateway de qualquer tipo de sistema que implemente esta arquitetura.
+
+<br>
+<br>
+<br>
+
+## Anotações
+
+### **Configurando a API Gateway**
+
+O arquivo de configuração (`configuration.json`) do _Ocelot_ é composto de dois atributos:
+
+```JSON
+{
+    "ReRoutes": [],
+    "GlobalConfiguration": {}
+}
+```
+
+- Em `ReRoutes` definimos como funcionará o sistema de redirecionamento da API Gateway.
+- Já `GlobalConfiguration` definimos configurações globais que sobrescrevem configurações do ReRoutes.
+
+Em `ReRoutes` é possível definir uma série de funcionalidades, mas os pontos mais importantes são:
+
+- `DownstreamPathTemplate`: Define a URL que será utilizada na criação da solicitação para o microsserviço;
+- `DownstreamScheme`: Define o scheme utilizado na solicitação para o microsserviço;
+- `DownstreamHostAndPorts`: Define o `Host` e a porta (`Port`) utilizada na solicitação para o microsserviço;
+- `UpstreamPathTemplate`: Define a URL que o Ocelot irá utilizar para indicar que deve ser chamado o microsserviço definido nos atributos `Downstream`
+  UpstreamHttpMethod: Define os métodos HTTP aceitos;
